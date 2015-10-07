@@ -1,0 +1,64 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Roamler.Cmd", "Roamler.Cmd\Roamler.Cmd.csproj", "{D3B60ABA-D7B5-446E-A386-C2A68C4B3EBF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Roamler.QuadTree", "Roamler.QuadTree\Roamler.QuadTree.csproj", "{BE45A7CF-9ED6-41B7-BE79-0771DD3692A7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Roamler.QuadTree.UnitTest", "Roamler.QuadTree.UnitTest\Roamler.QuadTree.UnitTest.csproj", "{C93B1678-2F3C-41BB-9F19-5C879548D3C0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Roamler.Web", "Roamler.Web\Roamler.Web.csproj", "{D441081F-5AAF-4650-9752-50351E948FA4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Roamler.Model", "Roamler.Model\Roamler.Model.csproj", "{AE58B985-B84E-4DDA-AF08-8D1FDA27908B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Roamler.Services", "Roamler.Services\Roamler.Services.csproj", "{63A847D2-F2B2-4ABB-8786-DF0BB7640C19}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Roamler.Data", "Roamler.Data\Roamler.Data.csproj", "{AB0C4542-C5D6-4D93-B443-12744CA231FC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Roamler.SpatialSearch", "Roamler.SpatialSearch\Roamler.SpatialSearch.csproj", "{8E44C7C6-7842-4DB8-A99A-A7E15203A234}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D3B60ABA-D7B5-446E-A386-C2A68C4B3EBF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D3B60ABA-D7B5-446E-A386-C2A68C4B3EBF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D3B60ABA-D7B5-446E-A386-C2A68C4B3EBF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D3B60ABA-D7B5-446E-A386-C2A68C4B3EBF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BE45A7CF-9ED6-41B7-BE79-0771DD3692A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE45A7CF-9ED6-41B7-BE79-0771DD3692A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE45A7CF-9ED6-41B7-BE79-0771DD3692A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE45A7CF-9ED6-41B7-BE79-0771DD3692A7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C93B1678-2F3C-41BB-9F19-5C879548D3C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C93B1678-2F3C-41BB-9F19-5C879548D3C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C93B1678-2F3C-41BB-9F19-5C879548D3C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C93B1678-2F3C-41BB-9F19-5C879548D3C0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D441081F-5AAF-4650-9752-50351E948FA4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D441081F-5AAF-4650-9752-50351E948FA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D441081F-5AAF-4650-9752-50351E948FA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D441081F-5AAF-4650-9752-50351E948FA4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AE58B985-B84E-4DDA-AF08-8D1FDA27908B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE58B985-B84E-4DDA-AF08-8D1FDA27908B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE58B985-B84E-4DDA-AF08-8D1FDA27908B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE58B985-B84E-4DDA-AF08-8D1FDA27908B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{63A847D2-F2B2-4ABB-8786-DF0BB7640C19}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{63A847D2-F2B2-4ABB-8786-DF0BB7640C19}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{63A847D2-F2B2-4ABB-8786-DF0BB7640C19}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{63A847D2-F2B2-4ABB-8786-DF0BB7640C19}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AB0C4542-C5D6-4D93-B443-12744CA231FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AB0C4542-C5D6-4D93-B443-12744CA231FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AB0C4542-C5D6-4D93-B443-12744CA231FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AB0C4542-C5D6-4D93-B443-12744CA231FC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8E44C7C6-7842-4DB8-A99A-A7E15203A234}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E44C7C6-7842-4DB8-A99A-A7E15203A234}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E44C7C6-7842-4DB8-A99A-A7E15203A234}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E44C7C6-7842-4DB8-A99A-A7E15203A234}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

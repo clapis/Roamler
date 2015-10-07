@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Roamler</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link href="public/css/site.css" rel="stylesheet" />
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key="></script>
+</head>
+<body>
+
+    <div id="map-canvas"></div>
+
+    <div id="search-box" class="box">
+        <form>
+            <div class="form-group">
+                <label for="latitude">Latitude</label>
+                <input type="number" id="latitude" name="latitude" class="form-control"
+                       value="52.385227" step="0.000001" min="-90" max="90" required />
+            </div>
+            <div class="form-group">
+                <label for="longitude">Longitude</label>
+                <input type="number" id="longitude" name="longitude" class="form-control"
+                       value="4.892941" step="0.000001" min="-180" max="180" required />
+            </div>
+            <div class="form-group">
+                <label for="distance">Max Distance (meters)</label>
+                <input type="number" id="distance" name="distance" class="form-control"
+                       value="5000" min="1" max="20000" required />
+            </div>
+            <div class="form-group">
+                <label for="top">Max Results</label>
+                <input type="number" id="top" name="top" class="form-control" 
+                       value="50" min="1" max="2000" required />
+            </div>
+            <button type="submit" class="btn btn-primary">Search</button>
+        </form>
+    </div>
+
+    <div id="results-box" class="box">
+        <h5 class="info">0 results found</h5>
+
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Distance</th>
+                <th>Address</th>
+            </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="public/js/app.js"></script>
+    <script type="text/javascript" src="public/js/viewmodels/map.js"></script>
+    <script type="text/javascript" src="public/js/viewmodels/search-box.js"></script>
+    <script type="text/javascript" src="public/js/viewmodels/results-box.js"></script>
+    <script type="text/javascript" src="public/js/proxies/location-proxy.js"></script>
+</body>
+</html>
