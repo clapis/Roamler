@@ -5,7 +5,7 @@ namespace Roamler.Services.Requests
     public class LocationSearchRequest
     {
         /// <summary>
-        /// Coordinate of search
+        /// Coordinates of search
         /// </summary>
         public GeoCoordinate Coordinate { get; set; }
 

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Roamler.Model;
 
 namespace Roamler.SpatialSearch.Queries
 {

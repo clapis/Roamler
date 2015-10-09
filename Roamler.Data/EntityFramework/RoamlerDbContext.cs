@@ -8,7 +8,7 @@ namespace Roamler.Data.EntityFramework
     {
         public RoamlerDbContext() : base("Roamler")
         {
-            Database.Log = s => Debug.WriteLine(s);
+            // Database.Log = s => Debug.WriteLine(s);
         }
 
         public DbSet<Location> Locations { get; set; }

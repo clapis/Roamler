@@ -63,7 +63,7 @@ namespace Roamler.Cmd
 
             var geoCoodinate = new GeoCoordinate(latitude, longitude);
 
-            return new Location { Address = address, Coordinate = geoCoodinate };
+            return new Location { Address = address, Coordinates = geoCoodinate };
         }
     }
 }

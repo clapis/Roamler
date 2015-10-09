@@ -2,8 +2,6 @@
 using System.Diagnostics;
 using Autofac;
 using Roamler.Model;
-using Roamler.Services;
-using Roamler.Services.Requests;
 using Roamler.SpatialSearch;
 using Roamler.SpatialSearch.Queries;
 

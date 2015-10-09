@@ -6,17 +6,17 @@ namespace Roamler.SpatialSearch.QuadTree
     public class SpatialDocument : ISpatialDocument, IPoint
     {
         private readonly int _id;
-        private readonly GeoCoordinate _coordinate;
+        private readonly GeoCoordinate _coordinates;
 
-        public SpatialDocument(Location location)
+        public SpatialDocument(ISpatialDocument entity)
         {
-            _id = location.Id;
-            _coordinate = location.Coordinate;
+            _id = entity.Id;
+            _coordinates = entity.Coordinates;
         }
 
         public int Id { get { return _id; } }
-        public GeoCoordinate Coordinates { get { return _coordinate; } }
-        public double X { get { return _coordinate.Longitude; } }
-        public double Y { get { return _coordinate.Latitude; } }
+        public GeoCoordinate Coordinates { get { return _coordinates; } }
+        public double X { get { return _coordinates.Longitude; } }
+        public double Y { get { return _coordinates.Latitude; } }
     }
 }

@@ -48,7 +48,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EmptySpatialIndex.cs" />
-    <Compile Include="ISpatialDocument.cs" />
     <Compile Include="ISpatialIndex.cs" />
     <Compile Include="ISpatialIndexBuilder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -64,7 +63,7 @@
       <Name>Roamler.Data</Name>
     </ProjectReference>
     <ProjectReference Include="..\Roamler.Model\Roamler.Model.csproj">
-      <Project>{AE58B985-B84E-4DDA-AF08-8D1FDA27908B}</Project>
+      <Project>{ae58b985-b84e-4dda-af08-8d1fda27908b}</Project>
       <Name>Roamler.Model</Name>
     </ProjectReference>
     <ProjectReference Include="..\Roamler.QuadTree\Roamler.QuadTree.csproj">

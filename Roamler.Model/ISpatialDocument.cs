@@ -1,6 +1,4 @@
-﻿using Roamler.Model;
-
-namespace Roamler.SpatialSearch
+﻿namespace Roamler.Model
 {
     /// <summary>
     /// A document that can be spatially indexed

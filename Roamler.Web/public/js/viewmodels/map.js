@@ -34,7 +34,7 @@
             var description = result.distance.toFixed(2) + 'm - ' + location.address;
 
             var marker = new google.maps.Marker({
-                position: { lat: location.coordinate.latitude, lng: location.coordinate.longitude },
+                position: { lat: location.coordinates.latitude, lng: location.coordinates.longitude },
                 map: map,
                 title: description
             });

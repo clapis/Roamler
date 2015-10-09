@@ -1,10 +1,12 @@
-﻿using System.Reflection;
+﻿using System.Linq;
+using System.Reflection;
 using System.Web.Http;
 using Autofac;
 using Autofac.Integration.WebApi;
 using Owin;
 using Roamler.Data;
 using Roamler.Data.EntityFramework;
+using Roamler.Model;
 using Roamler.Services;
 using Roamler.SpatialSearch;
 using Roamler.SpatialSearch.QuadTree;
@@ -41,11 +43,13 @@ namespace Roamler.Web
             builder.RegisterApiControllers(Assembly.GetExecutingAssembly());
 
             // search engine
-            builder.Register(c => new SpatialIndexBuilder(new RoamlerDbContext()))
-                .As<ISpatialIndexBuilder>();
+            builder.RegisterType<SpatialIndexBuilder>().As<ISpatialIndexBuilder>();
             builder.Register(c => c.Resolve<ISpatialIndexBuilder>().BuildIndex())
                 .As<ISpatialIndex>()
                 .SingleInstance();
+
+            // hack! to resolve SpatialIndexBuilder
+            builder.Register(c => new RoamlerDbContext().Locations).As<IQueryable<ISpatialDocument>>(); // hack!
 
             return builder.Build();
         }

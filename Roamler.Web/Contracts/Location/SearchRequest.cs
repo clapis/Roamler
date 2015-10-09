@@ -6,7 +6,7 @@ namespace Roamler.Web.Contracts.Location
     public class SearchRequest
     {
         /// <summary>
-        /// Coordinate of search
+        /// Coordinates of search
         /// </summary>
         [Required]
         public GeoCoordinate Coordinate { get; set; }

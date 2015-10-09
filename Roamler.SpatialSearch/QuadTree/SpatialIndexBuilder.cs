@@ -1,40 +1,28 @@
-﻿using System;
-using System.Linq;
-using Roamler.Data.EntityFramework;
+﻿using System.Linq;
+using Roamler.Model;
 using Roamler.QuadTree;
 
 namespace Roamler.SpatialSearch.QuadTree
 {
-    /// <summary>
-    /// This should be able to build an index from any spatial entity and not only
-    /// Location as is now. For the sake of time, I'm creating a dependency with
-    /// DbContext and indexing Location entity directly. More abstractions needed.
-    /// </summary>
     public class SpatialIndexBuilder : ISpatialIndexBuilder
     {
-        private readonly RoamlerDbContext _dbContext;
+        // this dependency is not looking good :/
+        // need some data provider abstraction here
+        private readonly IQueryable<ISpatialDocument> _ds;
 
-        public SpatialIndexBuilder(RoamlerDbContext dbContext)
+        public SpatialIndexBuilder(IQueryable<ISpatialDocument> ds)
         {
-            _dbContext = dbContext;
+            _ds = ds;
         }
 
         public ISpatialIndex BuildIndex()
         {
-            var locations = _dbContext.Locations;
+            if (!_ds.Any()) return new EmptySpatialIndex();
 
-            if (!locations.Any()) return new EmptySpatialIndex();
+            var mercartor = new Boundary(new Point(0, 0), 180, 90);
+            var quadTree = new QuadTree<SpatialDocument>(mercartor);
 
-            var maxLat = locations.Max(l => l.Coordinate.Latitude);
-            var minLat = locations.Min(l => l.Coordinate.Latitude);
-            var maxLng = locations.Max(l => l.Coordinate.Longitude);
-            var minLng = locations.Min(l => l.Coordinate.Longitude);
-
-            var indexArea = CreateIndexBoundary(maxLat, minLat, maxLng, minLng);
- 
-            var quadTree = new QuadTree<SpatialDocument>(indexArea);
-
-            foreach (var location in locations)
+            foreach (var location in _ds)
             {
                 quadTree.Insert(new SpatialDocument(location));
             }
@@ -44,20 +32,6 @@ namespace Roamler.SpatialSearch.QuadTree
             return index;
         }
 
-        private Boundary CreateIndexBoundary(double maxLat, double minLat, double maxLng, double minLng)
-        {
-            var center = new Point((maxLng - minLng) / 2, (maxLat - minLat) / 2);
-
-            var latDelta = center.Y - minLat;
-            var lngDelta = center.X - minLng;
-
-            // Data might be aligned all in one dimension. Or there could be just one document to be indexed.
-            // Could add some minimal value to deltas case they are zero, but that's a not priority at this momemnt
-            if (latDelta == 0 || lngDelta == 0) throw new NotSupportedException("Data is aligned in one dimension");
-
-            return new Boundary(center, lngDelta, latDelta);
-            
-        }
     }
 
 }
