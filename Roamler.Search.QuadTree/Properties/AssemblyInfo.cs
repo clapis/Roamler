@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Roamler.SpatialSearch")]
+[assembly: AssemblyTitle("Roamler.Search.QuadTree")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Roamler.SpatialSearch")]
+[assembly: AssemblyProduct("Roamler.Search.QuadTree")]
 [assembly: AssemblyCopyright("Copyright ©  2015")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("bbea6d9a-1cde-418c-bdc5-74515a8beeb6")]
+[assembly: Guid("cf81d443-b7c1-4810-9d5e-a4d6100f9537")]
 
 // Version information for an assembly consists of the following four values:
 //

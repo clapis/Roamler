@@ -5,9 +5,9 @@ using System.Linq;
 using Autofac;
 using Roamler.Data.EntityFramework;
 using Roamler.Model;
-using Roamler.SpatialSearch;
-using Roamler.SpatialSearch.QuadTree;
-using Roamler.SpatialSearch.Queries;
+using Roamler.Search;
+using Roamler.Search.QuadTree;
+using Roamler.Search.Queries;
 
 namespace Roamler.Cmd
 {
@@ -27,7 +27,7 @@ namespace Roamler.Cmd
 
                     var index = BuildIndex(locations);
 
-                    BenchmarkSearch(index, 1000);
+                    BenchmarkSearch(index, 100);
 
                 }
 
@@ -64,7 +64,7 @@ namespace Roamler.Cmd
         {
             Console.Write("Building index.. ");
 
-            var builder = new QuadTreeSpatialIndexBuilder(locations);
+            var builder = new SpatialIndexBuilder(locations);
 
             var timer = Stopwatch.StartNew();
 

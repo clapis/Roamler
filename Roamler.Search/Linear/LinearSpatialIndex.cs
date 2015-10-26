@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Roamler.Model;
-using Roamler.SpatialSearch.Queries;
+using Roamler.Search.Queries;
 
-namespace Roamler.SpatialSearch.Linear
+namespace Roamler.Search.Linear
 {
     public class LinearSpatialIndex : ISpatialIndex
     {

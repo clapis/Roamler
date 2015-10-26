@@ -2,7 +2,7 @@
 using Autofac;
 using Autofac.Integration.WebApi;
 using Owin;
-using Roamler.SpatialSearch;
+using Roamler.Search;
 
 namespace Roamler.Web
 {

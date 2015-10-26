@@ -4,13 +4,14 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{63A847D2-F2B2-4ABB-8786-DF0BB7640C19}</ProjectGuid>
+    <ProjectGuid>{D46579D3-92CF-4366-A197-29C79A7D7FD0}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Roamler.Services</RootNamespace>
-    <AssemblyName>Roamler.Services</AssemblyName>
+    <RootNamespace>Roamler.Search.QuadTree</RootNamespace>
+    <AssemblyName>Roamler.Search.QuadTree</AssemblyName>
     <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -39,21 +40,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ILocationSearchService.cs" />
-    <Compile Include="LocationSearchService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Requests\LocationSearchRequest.cs" />
-    <Compile Include="Results\LocationSearchResults.cs" />
+    <Compile Include="SpatialDocument.cs" />
+    <Compile Include="SpatialIndex.cs" />
+    <Compile Include="SpatialIndexBuilder.cs" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <ProjectReference Include="..\Roamler.Data\Roamler.Data.csproj">
-      <Project>{ab0c4542-c5d6-4d93-b443-12744ca231fc}</Project>
-      <Name>Roamler.Data</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Roamler.Model\Roamler.Model.csproj">
       <Project>{ae58b985-b84e-4dda-af08-8d1fda27908b}</Project>
       <Name>Roamler.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Roamler.QuadTree\Roamler.QuadTree.csproj">
+      <Project>{be45a7cf-9ed6-41b7-be79-0771dd3692a7}</Project>
+      <Name>Roamler.QuadTree</Name>
     </ProjectReference>
     <ProjectReference Include="..\Roamler.Search\Roamler.Search.csproj">
       <Project>{7fce6caa-9192-4bda-821b-c14a9195c84c}</Project>

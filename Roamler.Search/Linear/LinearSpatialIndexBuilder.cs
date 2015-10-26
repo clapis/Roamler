@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using Roamler.Model;
 
-namespace Roamler.SpatialSearch.Linear
+namespace Roamler.Search.Linear
 {
     public class LinearSpatialIndexBuilder : ISpatialIndexBuilder
     {

@@ -7,9 +7,9 @@ using Owin;
 using Roamler.Data;
 using Roamler.Data.EntityFramework;
 using Roamler.Model;
+using Roamler.Search;
+using Roamler.Search.QuadTree;
 using Roamler.Services;
-using Roamler.SpatialSearch;
-using Roamler.SpatialSearch.QuadTree;
 
 namespace Roamler.Web
 {
@@ -43,7 +43,7 @@ namespace Roamler.Web
             builder.RegisterApiControllers(Assembly.GetExecutingAssembly());
 
             // search engine
-            builder.RegisterType<QuadTreeSpatialIndexBuilder>().As<ISpatialIndexBuilder>();
+            builder.RegisterType<SpatialIndexBuilder>().As<ISpatialIndexBuilder>();
             builder.Register(c => c.Resolve<ISpatialIndexBuilder>().BuildIndex())
                 .As<ISpatialIndex>()
                 .SingleInstance();

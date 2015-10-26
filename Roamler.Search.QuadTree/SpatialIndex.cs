@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using Roamler.QuadTree;
-using Roamler.SpatialSearch.Queries;
+using Roamler.Search.Queries;
 
-namespace Roamler.SpatialSearch.QuadTree
+namespace Roamler.Search.QuadTree
 {
     /// <summary>
     /// Implementation of spatial index supporting Knn queries using QuadTrees.
@@ -12,11 +12,11 @@ namespace Roamler.SpatialSearch.QuadTree
     /// implement an RTree. However due to its simplicity, it should help
     /// to reduce the searched dataset.
     /// </summary>
-    public class QuadTreeSpatialIndex : ISpatialIndex
+    public class SpatialIndex : ISpatialIndex
     {
-        private readonly QuadTree<QuadTreeSpatialDocument> _quadTree;
+        private readonly QuadTree<SpatialDocument> _quadTree;
 
-        public QuadTreeSpatialIndex(QuadTree<QuadTreeSpatialDocument> quadTree)
+        public SpatialIndex(QuadTree<SpatialDocument> quadTree)
         {
             _quadTree = quadTree;
         }
@@ -100,6 +100,8 @@ namespace Roamler.SpatialSearch.QuadTree
 
             var center = new Point(left.Longitude + halfLongitude, bottom.Latitude + halfLatitude);
             var searchArea = new Boundary(center, halfLongitude, halfLatitude);
+
+            // TODO: consider borders. search might need to be split into two.
 
             return searchArea;
         }

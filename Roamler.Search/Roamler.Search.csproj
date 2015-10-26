@@ -4,13 +4,14 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{8E44C7C6-7842-4DB8-A99A-A7E15203A234}</ProjectGuid>
+    <ProjectGuid>{7FCE6CAA-9192-4BDA-821B-C14A9195C84C}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Roamler.SpatialSearch</RootNamespace>
-    <AssemblyName>Roamler.SpatialSearch</AssemblyName>
+    <RootNamespace>Roamler.Search</RootNamespace>
+    <AssemblyName>Roamler.Search</AssemblyName>
     <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -31,7 +32,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -46,24 +46,13 @@
     <Compile Include="Linear\LinearSpatialIndex.cs" />
     <Compile Include="Linear\LinearSpatialIndexBuilder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="QuadTree\SpatialDocument.cs" />
-    <Compile Include="QuadTree\SpatialIndex.cs" />
-    <Compile Include="QuadTree\SpatialIndexBuilder.cs" />
     <Compile Include="Queries\KnnQuery.cs" />
     <Compile Include="Queries\KnnQueryResult.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Roamler.Data\Roamler.Data.csproj">
-      <Project>{AB0C4542-C5D6-4D93-B443-12744CA231FC}</Project>
-      <Name>Roamler.Data</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Roamler.Model\Roamler.Model.csproj">
       <Project>{ae58b985-b84e-4dda-af08-8d1fda27908b}</Project>
       <Name>Roamler.Model</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Roamler.QuadTree\Roamler.QuadTree.csproj">
-      <Project>{BE45A7CF-9ED6-41B7-BE79-0771DD3692A7}</Project>
-      <Name>Roamler.QuadTree</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

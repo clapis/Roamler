@@ -1,4 +1,4 @@
-﻿namespace Roamler.SpatialSearch
+﻿namespace Roamler.Search
 {
     /// <summary>
     /// Exposes a method to build a spatial index

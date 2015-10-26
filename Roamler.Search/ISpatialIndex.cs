@@ -1,6 +1,6 @@
-﻿using Roamler.SpatialSearch.Queries;
+﻿using Roamler.Search.Queries;
 
-namespace Roamler.SpatialSearch
+namespace Roamler.Search
 {
     /// <summary>
     /// A spatial index that exposes spatial queries support

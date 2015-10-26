@@ -17,7 +17,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Roamler.Services", "Roamler
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Roamler.Data", "Roamler.Data\Roamler.Data.csproj", "{AB0C4542-C5D6-4D93-B443-12744CA231FC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Roamler.SpatialSearch", "Roamler.SpatialSearch\Roamler.SpatialSearch.csproj", "{8E44C7C6-7842-4DB8-A99A-A7E15203A234}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Roamler.Search.QuadTree", "Roamler.Search.QuadTree\Roamler.Search.QuadTree.csproj", "{D46579D3-92CF-4366-A197-29C79A7D7FD0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Roamler.Search", "Roamler.Search\Roamler.Search.csproj", "{7FCE6CAA-9192-4BDA-821B-C14A9195C84C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -53,10 +55,14 @@ Global
 		{AB0C4542-C5D6-4D93-B443-12744CA231FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AB0C4542-C5D6-4D93-B443-12744CA231FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AB0C4542-C5D6-4D93-B443-12744CA231FC}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8E44C7C6-7842-4DB8-A99A-A7E15203A234}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8E44C7C6-7842-4DB8-A99A-A7E15203A234}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8E44C7C6-7842-4DB8-A99A-A7E15203A234}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8E44C7C6-7842-4DB8-A99A-A7E15203A234}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D46579D3-92CF-4366-A197-29C79A7D7FD0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D46579D3-92CF-4366-A197-29C79A7D7FD0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D46579D3-92CF-4366-A197-29C79A7D7FD0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D46579D3-92CF-4366-A197-29C79A7D7FD0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7FCE6CAA-9192-4BDA-821B-C14A9195C84C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7FCE6CAA-9192-4BDA-821B-C14A9195C84C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7FCE6CAA-9192-4BDA-821B-C14A9195C84C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7FCE6CAA-9192-4BDA-821B-C14A9195C84C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

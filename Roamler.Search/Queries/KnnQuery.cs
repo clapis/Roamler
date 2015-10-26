@@ -1,6 +1,6 @@
 ﻿using Roamler.Model;
 
-namespace Roamler.SpatialSearch.Queries
+namespace Roamler.Search.Queries
 {
     public class KnnQuery
     {

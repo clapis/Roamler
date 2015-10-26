@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Roamler.Data;
+using Roamler.Search;
+using Roamler.Search.Queries;
 using Roamler.Services.Requests;
 using Roamler.Services.Results;
-using Roamler.SpatialSearch;
-using Roamler.SpatialSearch.Queries;
 
 namespace Roamler.Services
 {

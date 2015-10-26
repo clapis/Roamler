@@ -110,13 +110,13 @@
       <Project>{be45a7cf-9ed6-41b7-be79-0771dd3692a7}</Project>
       <Name>Roamler.QuadTree</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Roamler.Services\Roamler.Services.csproj">
-      <Project>{63a847d2-f2b2-4abb-8786-df0bb7640c19}</Project>
-      <Name>Roamler.Services</Name>
+    <ProjectReference Include="..\Roamler.Search.QuadTree\Roamler.Search.QuadTree.csproj">
+      <Project>{d46579d3-92cf-4366-a197-29c79a7d7fd0}</Project>
+      <Name>Roamler.Search.QuadTree</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Roamler.SpatialSearch\Roamler.SpatialSearch.csproj">
-      <Project>{8E44C7C6-7842-4DB8-A99A-A7E15203A234}</Project>
-      <Name>Roamler.SpatialSearch</Name>
+    <ProjectReference Include="..\Roamler.Search\Roamler.Search.csproj">
+      <Project>{7fce6caa-9192-4bda-821b-c14a9195c84c}</Project>
+      <Name>Roamler.Search</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

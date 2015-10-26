@@ -1,14 +1,14 @@
 ﻿using Roamler.Model;
 using Roamler.QuadTree;
 
-namespace Roamler.SpatialSearch.QuadTree
+namespace Roamler.Search.QuadTree
 {
-    public class QuadTreeSpatialDocument : ISpatialDocument, IPoint
+    public class SpatialDocument : ISpatialDocument, IPoint
     {
         private readonly int _id;
         private readonly GeoCoordinate _coordinates;
 
-        public QuadTreeSpatialDocument(ISpatialDocument entity)
+        public SpatialDocument(ISpatialDocument entity)
         {
             _id = entity.Id;
             _coordinates = entity.Coordinates;
