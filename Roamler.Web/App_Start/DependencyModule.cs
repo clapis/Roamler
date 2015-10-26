@@ -43,7 +43,7 @@ namespace Roamler.Web
             builder.RegisterApiControllers(Assembly.GetExecutingAssembly());
 
             // search engine
-            builder.RegisterType<SpatialIndexBuilder>().As<ISpatialIndexBuilder>();
+            builder.RegisterType<QuadTreeSpatialIndexBuilder>().As<ISpatialIndexBuilder>();
             builder.Register(c => c.Resolve<ISpatialIndexBuilder>().BuildIndex())
                 .As<ISpatialIndex>()
                 .SingleInstance();

@@ -12,11 +12,11 @@ namespace Roamler.SpatialSearch.QuadTree
     /// implement an RTree. However due to its simplicity, it should help
     /// to reduce the searched dataset.
     /// </summary>
-    public class SpatialIndex : ISpatialIndex
+    public class QuadTreeSpatialIndex : ISpatialIndex
     {
-        private readonly QuadTree<SpatialDocument> _quadTree;
+        private readonly QuadTree<QuadTreeSpatialDocument> _quadTree;
 
-        public SpatialIndex(QuadTree<SpatialDocument> quadTree)
+        public QuadTreeSpatialIndex(QuadTree<QuadTreeSpatialDocument> quadTree)
         {
             _quadTree = quadTree;
         }

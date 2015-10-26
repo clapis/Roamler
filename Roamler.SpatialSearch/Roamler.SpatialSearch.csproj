@@ -43,6 +43,8 @@
     <Compile Include="EmptySpatialIndex.cs" />
     <Compile Include="ISpatialIndex.cs" />
     <Compile Include="ISpatialIndexBuilder.cs" />
+    <Compile Include="Linear\LinearSpatialIndex.cs" />
+    <Compile Include="Linear\LinearSpatialIndexBuilder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QuadTree\SpatialDocument.cs" />
     <Compile Include="QuadTree\SpatialIndex.cs" />

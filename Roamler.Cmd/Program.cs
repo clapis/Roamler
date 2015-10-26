@@ -1,8 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using Autofac;
+using Roamler.Data.EntityFramework;
 using Roamler.Model;
 using Roamler.SpatialSearch;
+using Roamler.SpatialSearch.QuadTree;
 using Roamler.SpatialSearch.Queries;
 
 namespace Roamler.Cmd
@@ -17,30 +21,13 @@ namespace Roamler.Cmd
 
                 using (var scope = container.BeginLifetimeScope())
                 {
-                    var index = BuildIndex(scope);
+                    var db = scope.Resolve<RoamlerDbContext>();
 
-                    var amsterdam = new GeoCoordinate(52.3667, 4.900);
+                    var locations = LoadLocations(db).AsQueryable();
 
-                    var query = new KnnQuery
-                    {
-                        Coordinate = amsterdam,
-                        MaxDistance = 10000,
-                        MaxResults = 15
-                    };
-                    
-                    var timer = Stopwatch.StartNew();
-                    Console.Write("Searching top {0} within {1} m from [{2}] ..", query.MaxResults, query.MaxDistance, query.Coordinate);
-                    
-                    var queryResult = index.KnnSearch(query);
-                    
-                    timer.Stop();
-                    Console.WriteLine("ok ({0} ms)", timer.ElapsedMilliseconds);
+                    var index = BuildIndex(locations);
 
-
-                    Console.WriteLine("Found {0} documents", queryResult.Results.Count);
-
-                    foreach(var r in queryResult.Results)
-                        Console.WriteLine("{0:N0} m - [{1}]", r.Distance, r.Document.Coordinates);
+                    BenchmarkSearch(index, 1000);
 
                 }
 
@@ -57,19 +44,63 @@ namespace Roamler.Cmd
         }
 
 
-        private static ISpatialIndex BuildIndex(ILifetimeScope scope)
+
+        private static List<Location> LoadLocations(RoamlerDbContext db)
         {
-            Console.Write("Building index..");
+            var timer = Stopwatch.StartNew();
+
+            Console.Write("Loading data.. ");
+
+            var locations = db.Locations.ToList();
+
+            timer.Stop();
+
+            Console.WriteLine("ok ({0} ms)", timer.ElapsedMilliseconds);
+
+            return locations;
+        }
+
+        private static ISpatialIndex BuildIndex(IQueryable<Location> locations)
+        {
+            Console.Write("Building index.. ");
+
+            var builder = new QuadTreeSpatialIndexBuilder(locations);
 
             var timer = Stopwatch.StartNew();
 
-            var index = scope.Resolve<ISpatialIndex>();
+            var index = builder.BuildIndex();
 
             timer.Stop();
 
             Console.WriteLine("ok ({0} ms)", timer.ElapsedMilliseconds);
 
             return index;
+        }
+
+        private static void BenchmarkSearch(ISpatialIndex index, int rounds)
+        {
+            var query = new KnnQuery
+            {
+                Coordinate = new GeoCoordinate(52.3667, 4.900),
+                MaxDistance = 10000,
+                MaxResults = 15
+            };
+
+            Console.Write("Searching top {0} within {1} m from [{2}] .. ", query.MaxResults, query.MaxDistance, query.Coordinate);
+
+            var total = 0L;
+
+            var timer = new Stopwatch();
+
+            for (int i = rounds; i > 0; i--)
+            {
+                timer.Restart();
+                index.KnnSearch(query);
+                timer.Stop();
+                total += timer.ElapsedMilliseconds;
+            }
+
+            Console.WriteLine("ok ({0} ms)", total / rounds);
         }
 
     }
