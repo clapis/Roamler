@@ -16,17 +16,17 @@ namespace Roamler.Search.Linear
 
         public KnnQueryResult KnnSearch(KnnQuery query)
         {
-            var results =
+            var search =
                 from doc in _docs
                 let distance = query.Coordinate.CalculateDistance(doc.Coordinates)
                 where distance <= query.MaxDistance
                 orderby distance
                 select new KnnQueryResultItem(doc, distance);
 
-            // reduce set to max results
-            results = results.Take(query.MaxResults);
+            // list results taking top max
+            var results = search.Take(query.MaxResults).ToList();
 
-            return KnnQueryResult.Success(results.ToList());
+            return KnnQueryResult.Success(results);
         }
 
         public void Add(ISpatialDocument doc)
