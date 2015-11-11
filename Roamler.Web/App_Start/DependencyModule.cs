@@ -44,14 +44,22 @@ namespace Roamler.Web
 
             // search engine
             builder.RegisterType<SpatialIndexBuilder>().As<ISpatialIndexBuilder>();
-            builder.Register(c => c.Resolve<ISpatialIndexBuilder>().BuildIndex())
-                .As<ISpatialIndex>()
-                .SingleInstance();
-
-            // hack! to resolve SpatialIndexBuilder
-            builder.Register(c => new RoamlerDbContext().Locations).As<IQueryable<ISpatialDocument>>(); // hack!
+            builder.Register(c => BuildIndex(c)).As<ISpatialIndex>().SingleInstance();
 
             return builder.Build();
+        }
+
+        // HACK: Build index on first attempt to resolve it
+        private static ISpatialIndex BuildIndex(IComponentContext c)
+        {
+            using (var db = new RoamlerDbContext())
+            {
+                var builder = c.Resolve<ISpatialIndexBuilder>();
+
+                var locations = db.Locations.Take(100000);
+
+                return builder.BuildIndex(locations);
+            }
         }
     }
 }

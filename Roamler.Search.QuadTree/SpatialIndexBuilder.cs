@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using Roamler.Model;
 using Roamler.QuadTree;
 
@@ -6,23 +7,15 @@ namespace Roamler.Search.QuadTree
 {
     public class SpatialIndexBuilder : ISpatialIndexBuilder
     {
-        // this dependency is not looking good :/
-        // need some data provider abstraction here
-        private readonly IQueryable<ISpatialDocument> _ds;
 
-        public SpatialIndexBuilder(IQueryable<ISpatialDocument> ds)
+        public ISpatialIndex BuildIndex(IQueryable<ISpatialDocument> documents)
         {
-            _ds = ds;
-        }
+            if (!documents.Any()) return new EmptySpatialIndex();
 
-        public ISpatialIndex BuildIndex()
-        {
-            if (!_ds.Any()) return new EmptySpatialIndex();
+            var mercator = new Boundary(new Point(0, 0), 180, 90);
+            var quadTree = new QuadTree<SpatialDocument>(mercator);
 
-            var mercartor = new Boundary(new Point(0, 0), 180, 90);
-            var quadTree = new QuadTree<SpatialDocument>(mercartor);
-
-            foreach (var doc in _ds)
+            foreach (var doc in documents)
             {
                 quadTree.Insert(new SpatialDocument(doc));
             }

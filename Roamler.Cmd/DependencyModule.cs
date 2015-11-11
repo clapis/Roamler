@@ -1,5 +1,7 @@
 ﻿using Autofac;
 using Roamler.Data.EntityFramework;
+using Roamler.Search;
+using Roamler.Search.QuadTree;
 
 namespace Roamler.Cmd
 {
@@ -10,7 +12,16 @@ namespace Roamler.Cmd
             var builder = new ContainerBuilder();
 
             // db
-            builder.RegisterType<RoamlerDbContext>();
+            builder.RegisterType<RoamlerDbContext>().AsSelf();
+
+            // db init
+            builder.RegisterType<DbInitializer>().AsSelf();
+            //builder.RegisterType<CsvLocationProvider>().As<ILocationProvider>();
+            builder.RegisterType<RandomLocationProvider>().As<ILocationProvider>();
+
+            // index
+            builder.RegisterType<SpatialIndexBuilder>().As<ISpatialIndexBuilder>();
+                
 
             return builder.Build();
         }

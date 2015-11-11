@@ -1,12 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using Autofac;
 using Roamler.Data.EntityFramework;
 using Roamler.Model;
 using Roamler.Search;
-using Roamler.Search.QuadTree;
 using Roamler.Search.Queries;
 
 namespace Roamler.Cmd
@@ -22,10 +20,14 @@ namespace Roamler.Cmd
                 using (var scope = container.BeginLifetimeScope())
                 {
                     var db = scope.Resolve<RoamlerDbContext>();
+                    var initializer = scope.Resolve<DbInitializer>();
+                    var indexBuilder = scope.Resolve<ISpatialIndexBuilder>();
 
-                    var locations = LoadLocations(db).AsQueryable();
+                    // InitializeDatabase(initializer);
 
-                    var index = BuildIndex(locations);
+                    var locations = db.Locations.Take(200000);
+
+                    var index = BuildIndex(indexBuilder, locations);
 
                     BenchmarkSearch(index, 100);
 
@@ -43,32 +45,26 @@ namespace Roamler.Cmd
             Console.ReadKey();
         }
 
-
-
-        private static List<Location> LoadLocations(RoamlerDbContext db)
+        private static void InitializeDatabase(DbInitializer initializer)
         {
             var timer = Stopwatch.StartNew();
 
-            Console.Write("Loading data.. ");
+            Console.Write("Initializing db.. ");
 
-            var locations = db.Locations.ToList();
+            initializer.Init();
 
             timer.Stop();
 
             Console.WriteLine("ok ({0} ms)", timer.ElapsedMilliseconds);
-
-            return locations;
         }
 
-        private static ISpatialIndex BuildIndex(IQueryable<Location> locations)
+        private static ISpatialIndex BuildIndex(ISpatialIndexBuilder builder, IQueryable<Location> locations)
         {
             Console.Write("Building index.. ");
 
-            var builder = new SpatialIndexBuilder(locations);
-
             var timer = Stopwatch.StartNew();
 
-            var index = builder.BuildIndex();
+            var index = builder.BuildIndex(locations);
 
             timer.Stop();
 

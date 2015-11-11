@@ -3,33 +3,35 @@ using System.IO;
 using System.Text.RegularExpressions;
 using Roamler.Data.EntityFramework;
 using Roamler.Model;
+using System.Collections.Generic;
 
 namespace Roamler.Cmd
 {
     /// <summary>
     /// Just a quick and dirty helper to load data from CSV file into Database
     /// </summary>
-    public static class DbInitializer
+    public class DbInitializer
     {
-        const string CsvPattern = @"""\s*,\s*""";
+        private readonly ILocationProvider _provider;
 
-        public static void LoadLocationsFromFile(string filePath)
+        public DbInitializer(ILocationProvider provider)
         {
-            if (!File.Exists(filePath))
-                throw new ApplicationException("file not found: " + filePath);
-            
-            
+            _provider = provider;
+        }
+
+        public void Init()
+        {
+            int count = 0;
+            int batch = 10000;
+
             var db = NewContext();
 
-            int count = 0;
-
-            foreach (var line in File.ReadLines(filePath))
+            foreach (var location in _provider.GetLocations())
             {
-                var location = Parse(line);
                 db.Locations.Add(location);
                 Console.Write("\r Inserted: {0}", ++count); 
 
-                if (count % 1000 == 0)
+                if (count % batch == 0)
                 {
                     db.SaveChanges();
                     db.Dispose();
@@ -42,7 +44,7 @@ namespace Roamler.Cmd
             db.Dispose();
         }
 
-        private static RoamlerDbContext NewContext()
+        private RoamlerDbContext NewContext()
         {
             var db = new RoamlerDbContext();
 
@@ -52,8 +54,60 @@ namespace Roamler.Cmd
 
             return db;
         }
+    }
 
-        private static Location Parse(string input)
+    public interface ILocationProvider
+    {
+        IEnumerable<Location> GetLocations();
+    }
+
+    public class RandomLocationProvider : ILocationProvider
+    {
+        private readonly Random _random = new Random();
+
+        public IEnumerable<Location> GetLocations()
+        {
+            for (int i = 0; i < 200000; i++)
+            {
+                var address = string.Format("{0} Random Address", i);
+                var latitude = (_random.NextDouble() * 180) - 90;
+                var longitude = (_random.NextDouble() * 360) - 180;
+
+                var location = new Location
+                {
+                    Address = address,
+                    Coordinates = new GeoCoordinate(latitude, longitude)
+                };
+
+                yield return location;
+            }
+        }
+    }
+
+    public class CsvLocationProvider : ILocationProvider
+    {
+        const string CsvPattern = @"""\s*,\s*""";
+
+        private readonly string _filePath;
+
+        public CsvLocationProvider(string filePath)
+        {
+            if (!File.Exists(filePath))
+                throw new ApplicationException("file not found: " + filePath);
+
+            _filePath = filePath;
+
+        }
+
+        public IEnumerable<Location> GetLocations()
+        {
+            foreach (var line in File.ReadLines(_filePath))
+            {
+                yield return Parse(line);
+            }
+        }
+
+        private Location Parse(string input)
         {
             string[] tokens = Regex.Split(input.Substring(1, input.Length - 2), CsvPattern);
 
@@ -65,5 +119,6 @@ namespace Roamler.Cmd
 
             return new Location { Address = address, Coordinates = geoCoodinate };
         }
+
     }
 }
